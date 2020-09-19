@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "rchkmathrace",
     "public": "public",
     "ignore": [
       "firebase.json",

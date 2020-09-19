@@ -1,6 +1,5 @@
 import React, {useState,useEffect} from 'react';
-import logo from './logo.svg';
-import firebase from './firebase'
+import firebase from './firebase';
 import LoadingScreen from './components/LoadingScreen'
 import './App.css';
 
@@ -12,13 +11,14 @@ import './App.css';
 require("firebase/auth");
 require("firebase/firestore"); - Using all firebase features*/
 function App() {
-  const [loggedin, setisloggedin] = useState(-1)
-  const [isauthorized, setisauthorized] = useState(false)
+  const [loggedin, setisloggedin] = useState(-1);
+  const [isauthorized, setisauthorized] = useState(false);
 
 // useEffect must be used otherwise the set... functions will continuously rerender,
 //which can crash the dom.
   useEffect(() => {
     var user = firebase.auth().currentUser;
+    console.log(user);
     setisloggedin(user);
     if(user !== null){
       setisauthorized(/@rchk.edu.hk/.test(user.email));
