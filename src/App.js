@@ -15,22 +15,14 @@ function App() {
   const [isauthorized, setisauthorized] = useState(false);
 
 // useEffect must be used otherwise the set... functions will continuously rerender,
-//which can crash the dom.
-  useEffect(() => {
-    var user = firebase.auth().currentUser;
-    console.log(user);
+//which can crash the dom
+  firebase.auth().onAuthStateChanged(function(user){
     setisloggedin(user);
-    if(user !== null){
-      setisauthorized(/@rchk.edu.hk/.test(user.email));
-    }
-    firebase.auth().onAuthStateChanged(function(user){
-      setisloggedin(user);
-      if (user !== null) {
-        if (/@rchk.edu.hk/.test(user.email)) {
-          setisauthorized(true);
-        }
+    if (user !== null) {
+      if (/@rchk.edu.hk/.test(user.email)) {
+        setisauthorized(true);
       }
-    });
+    }
   });
 
   if(!isauthorized){

@@ -12,7 +12,10 @@ const firebaseConfig = {
   measurementId: "G-ZRBV7WZX3Z"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-
-export default firebase;
+class Firebase{
+  constructor(){
+    firebase.app.initializeApp(firebaseConfig);
+    firebase.app.analytics();
+  }
+}
+export default Firebase;
